@@ -20,10 +20,10 @@ func StartScheduleHandle(bot *tgbotapi.BotAPI, ctx context.Context, weatherServi
 				log.Println("Завершение отправки запланированных сообщений...")
 				return
 			case <-ticker.C:
-				now := time.Now()
+				now := time.Now().UTC()
 				nextSendTime := time.Date(
 					now.Year(), now.Month(), now.Day(),
-					7, 30, 0, 0, time.Local, // Запланированное время (7:30)
+					4, 30, 0, 0, time.UTC, // Запланированное время (7:30 Мск)
 				)
 
 				// Если время уже прошло сегодня, планируем на завтра
